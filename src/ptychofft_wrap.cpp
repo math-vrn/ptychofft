@@ -3797,10 +3797,9 @@ fail:
 SWIGINTERN PyObject *_wrap_ptychofft_setobjc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ptychofft *arg1 = (ptychofft *) 0 ;
-  float *arg2 = (float *) 0 ;
+  int *arg2 = (int *) 0 ;
   int *arg3 = (int *) 0 ;
-  int *arg4 = (int *) 0 ;
-  float2 *arg5 = (float2 *) 0 ;
+  float2 *arg4 = (float2 *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -3809,41 +3808,33 @@ SWIGINTERN PyObject *_wrap_ptychofft_setobjc(PyObject *SWIGUNUSEDPARM(self), PyO
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOO:ptychofft_setobjc",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ptychofft_setobjc",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ptychofft, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ptychofft_setobjc" "', argument " "1"" of type '" "ptychofft *""'"); 
   }
   arg1 = reinterpret_cast< ptychofft * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_float, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ptychofft_setobjc" "', argument " "2"" of type '" "float *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ptychofft_setobjc" "', argument " "2"" of type '" "int *""'"); 
   }
-  arg2 = reinterpret_cast< float * >(argp2);
+  arg2 = reinterpret_cast< int * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ptychofft_setobjc" "', argument " "3"" of type '" "int *""'"); 
   }
   arg3 = reinterpret_cast< int * >(argp3);
-  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_int, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_float2, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ptychofft_setobjc" "', argument " "4"" of type '" "int *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ptychofft_setobjc" "', argument " "4"" of type '" "float2 *""'"); 
   }
-  arg4 = reinterpret_cast< int * >(argp4);
-  res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_float2, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ptychofft_setobjc" "', argument " "5"" of type '" "float2 *""'"); 
-  }
-  arg5 = reinterpret_cast< float2 * >(argp5);
-  (arg1)->setobjc(arg2,arg3,arg4,arg5);
+  arg4 = reinterpret_cast< float2 * >(argp4);
+  (arg1)->setobjc(arg2,arg3,arg4);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4010,88 +4001,71 @@ fail:
 SWIGINTERN PyObject *_wrap_ptychofft_setobj(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ptychofft *arg1 = (ptychofft *) 0 ;
-  float *arg2 = (float *) 0 ;
+  int *arg2 = (int *) 0 ;
   int arg3 ;
-  int *arg4 = (int *) 0 ;
-  int arg5 ;
+  int arg4 ;
+  int *arg5 = (int *) 0 ;
   int arg6 ;
-  int *arg7 = (int *) 0 ;
-  int arg8 ;
+  int arg7 ;
+  float *arg8 = (float *) 0 ;
   int arg9 ;
-  float *arg10 = (float *) 0 ;
-  int arg11 ;
-  int arg12 ;
+  int arg10 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyArrayObject *array2 = NULL ;
   int is_new_object2 = 0 ;
-  PyArrayObject *array4 = NULL ;
-  int is_new_object4 = 0 ;
-  PyArrayObject *array7 = NULL ;
-  int is_new_object7 = 0 ;
-  PyArrayObject *array10 = NULL ;
-  int is_new_object10 = 0 ;
+  PyArrayObject *array5 = NULL ;
+  int is_new_object5 = 0 ;
+  PyArrayObject *array8 = NULL ;
+  int is_new_object8 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOO:ptychofft_setobj",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ptychofft_setobj",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ptychofft, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ptychofft_setobj" "', argument " "1"" of type '" "ptychofft *""'"); 
   }
   arg1 = reinterpret_cast< ptychofft * >(argp1);
   {
-    npy_intp size[1] = {
-      -1 
+    npy_intp size[2] = {
+      -1, -1 
     };
-    array2 = obj_to_array_contiguous_allow_conversion(obj1,
-      NPY_FLOAT,
+    array2 = obj_to_array_contiguous_allow_conversion(obj1, NPY_INT,
       &is_new_object2);
-    if (!array2 || !require_dimensions(array2, 1) ||
-      !require_size(array2, size, 1)) SWIG_fail;
-    arg2 = (float*) array_data(array2);
+    if (!array2 || !require_dimensions(array2, 2) ||
+      !require_size(array2, size, 2)) SWIG_fail;
+    arg2 = (int*) array_data(array2);
     arg3 = (int) array_size(array2,0);
+    arg4 = (int) array_size(array2,1);
   }
   {
     npy_intp size[2] = {
       -1, -1 
     };
-    array4 = obj_to_array_contiguous_allow_conversion(obj2, NPY_INT,
-      &is_new_object4);
-    if (!array4 || !require_dimensions(array4, 2) ||
-      !require_size(array4, size, 2)) SWIG_fail;
-    arg4 = (int*) array_data(array4);
-    arg5 = (int) array_size(array4,0);
-    arg6 = (int) array_size(array4,1);
+    array5 = obj_to_array_contiguous_allow_conversion(obj2, NPY_INT,
+      &is_new_object5);
+    if (!array5 || !require_dimensions(array5, 2) ||
+      !require_size(array5, size, 2)) SWIG_fail;
+    arg5 = (int*) array_data(array5);
+    arg6 = (int) array_size(array5,0);
+    arg7 = (int) array_size(array5,1);
   }
   {
     npy_intp size[2] = {
       -1, -1 
     };
-    array7 = obj_to_array_contiguous_allow_conversion(obj3, NPY_INT,
-      &is_new_object7);
-    if (!array7 || !require_dimensions(array7, 2) ||
-      !require_size(array7, size, 2)) SWIG_fail;
-    arg7 = (int*) array_data(array7);
-    arg8 = (int) array_size(array7,0);
-    arg9 = (int) array_size(array7,1);
+    array8 = obj_to_array_contiguous_allow_conversion(obj3, NPY_FLOAT,
+      &is_new_object8);
+    if (!array8 || !require_dimensions(array8, 2) ||
+      !require_size(array8, size, 2)) SWIG_fail;
+    arg8 = (float*) array_data(array8);
+    arg9 = (int) array_size(array8,0);
+    arg10 = (int) array_size(array8,1);
   }
-  {
-    npy_intp size[2] = {
-      -1, -1 
-    };
-    array10 = obj_to_array_contiguous_allow_conversion(obj4, NPY_FLOAT,
-      &is_new_object10);
-    if (!array10 || !require_dimensions(array10, 2) ||
-      !require_size(array10, size, 2)) SWIG_fail;
-    arg10 = (float*) array_data(array10);
-    arg11 = (int) array_size(array10,0);
-    arg12 = (int) array_size(array10,1);
-  }
-  (arg1)->setobj(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12);
+  (arg1)->setobj(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
   resultobj = SWIG_Py_Void();
   {
     if (is_new_object2 && array2)
@@ -4100,21 +4074,15 @@ SWIGINTERN PyObject *_wrap_ptychofft_setobj(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
   }
   {
-    if (is_new_object4 && array4)
+    if (is_new_object5 && array5)
     {
-      Py_DECREF(array4); 
+      Py_DECREF(array5); 
     }
   }
   {
-    if (is_new_object7 && array7)
+    if (is_new_object8 && array8)
     {
-      Py_DECREF(array7); 
-    }
-  }
-  {
-    if (is_new_object10 && array10)
-    {
-      Py_DECREF(array10); 
+      Py_DECREF(array8); 
     }
   }
   return resultobj;
@@ -4126,21 +4094,15 @@ fail:
     }
   }
   {
-    if (is_new_object4 && array4)
+    if (is_new_object5 && array5)
     {
-      Py_DECREF(array4); 
+      Py_DECREF(array5); 
     }
   }
   {
-    if (is_new_object7 && array7)
+    if (is_new_object8 && array8)
     {
-      Py_DECREF(array7); 
-    }
-  }
-  {
-    if (is_new_object10 && array10)
-    {
-      Py_DECREF(array10); 
+      Py_DECREF(array8); 
     }
   }
   return NULL;

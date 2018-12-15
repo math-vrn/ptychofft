@@ -16,7 +16,6 @@ ptychofft::ptychofft(size_t Ntheta_, size_t Nz_, size_t N_,
 
 	cudaMalloc((void**)&f,Ntheta*Nz*N*sizeof(float2));
 	cudaMalloc((void**)&g,Ntheta*Nscanx*Nscany*detx*dety*sizeof(float2));
-	cudaMalloc((void**)&theta,Ntheta*sizeof(float));
 	cudaMalloc((void**)&scanx,Ntheta*Nscanx*sizeof(int));
 	cudaMalloc((void**)&scany,Ntheta*Nscany*sizeof(int));
 	cudaMalloc((void**)&prb,Nprb*Nprb*sizeof(float2));
@@ -31,24 +30,24 @@ ptychofft::ptychofft(size_t Ntheta_, size_t Nz_, size_t N_,
 	inembed[0] = detx; inembed[1] = dety;
 	onembed[0] = detx; onembed[1] = dety;
 	cufftPlanMany(&plan2dfwd, 2, ffts, inembed, 1, idist, onembed, 1, odist, CUFFT_C2C, Ntheta*Nscanx*Nscany); 
+	fprintf(stderr,"ptycho created %d angles\n",Ntheta);
 }
 
 ptychofft::~ptychofft()
 {	
 	cudaFree(f);
 	cudaFree(g);
-	cudaFree(theta);
 	cudaFree(scanx);
 	cudaFree(scany);
 	cudaFree(prb);
 	cudaFree(ff);
 	cudaFree(data);
 	cufftDestroy(plan2dfwd);
+	fprintf(stderr,"ptycho removed\n");
 }
 
-void ptychofft::setobjc(float* theta_, int* scanx_, int* scany_, float2* prb_)
+void ptychofft::setobjc(int* scanx_, int* scany_, float2* prb_)
 {
-	cudaMemcpy(theta,theta_,Ntheta*sizeof(float),cudaMemcpyDefault);  	
 	cudaMemcpy(scanx,scanx_,Ntheta*Nscanx*sizeof(int),cudaMemcpyDefault);  	
 	cudaMemcpy(scany,scany_,Ntheta*Nscany*sizeof(int),cudaMemcpyDefault);  	
 	cudaMemcpy(prb,prb_,Nprb*Nprb*sizeof(float2),cudaMemcpyDefault);
@@ -102,7 +101,7 @@ void ptychofft::update_ampc(float2* g_, float* data_)
 
 	cudaMemcpy(g,g_,Ntheta*Nscanx*Nscany*detx*dety*sizeof(float2),cudaMemcpyDefault);
 	cudaMemcpy(data,data_,Ntheta*Nscanx*Nscany*detx*dety*sizeof(float),cudaMemcpyDefault);
-	updateamp<<<GS3d0,BS3d>>>(g,data,Ntheta,Nz,N,Nscanx,Nscany,Nprb,detx,dety);
+	updateamp<<<GS3d0,BS3d>>>(g,data,Ntheta,Nscanx*Nscany,detx*dety);
 	cudaMemcpy(g_,g,Ntheta*Nscanx*Nscany*detx*dety*sizeof(float2),cudaMemcpyDefault);  	
 }
 
@@ -111,12 +110,11 @@ void ptychofft::update_ampc(float2* g_, float* data_)
 
 
 
-void ptychofft::setobj(float* theta_, int N20,
-					int* scanx_, int N30, int N31,
+void ptychofft::setobj(int* scanx_, int N30, int N31,
 					int* scany_, int N40, int n41,
 					float* prb_, int N50, int N51)
 {
-	setobjc(theta_, scanx_, scany_, (float2*)prb_);
+	setobjc(scanx_, scany_, (float2*)prb_);
 }
 
 void ptychofft::fwd(float* g_, int N00, int N01, int N02, int N03,

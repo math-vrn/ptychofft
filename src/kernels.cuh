@@ -78,19 +78,21 @@ void __global__ mulamul(float2 *f, float2* ff, float2 *prb, int *scanx, int *sca
 
 
 void __global__ updateamp(float2 *g, float* data, 
-	int Ntheta, int Nz, int N, int Nscanx, int Nscany, int Nprb, int detx, int dety)
+	int Ntheta, int NscanxNscany, int detxdety)
 {
 	int tx = blockDim.x * blockIdx.x + threadIdx.x;
 	int ty = blockDim.y * blockIdx.y + threadIdx.y;
 	int tz = blockDim.z * blockIdx.z + threadIdx.z;
 
-	if (tx>=detx*dety||ty>=Nscanx*Nscany||tz>=Ntheta) return;
+	if (tx>=detxdety||ty>=NscanxNscany||tz>=Ntheta) return;
 
-	int ind = tx+ty*detx*dety+tz*detx*dety*Nscanx*Nscany;
+	int ind = tx+ty*detxdety+tz*detxdety*NscanxNscany;
 	float2 g0 = g[ind];
-	float ga = sqrtf(data[ind]/(g0.x*g0.x+g0.y*g0.y));
-	g[ind].x = g0.x*ga;
-	g[ind].y = g0.y*ga;
+	float data0 = sqrtf(data[ind]);
+	float eps = 1e-5;
+	float ga = sqrtf(g0.x*g0.x+g0.y*g0.y);
+	g[ind].x = g0.x*eps/(ga*eps+eps*eps)*data0;
+	g[ind].y = g0.y*eps/(ga*eps+eps*eps)*data0;
 
 
 

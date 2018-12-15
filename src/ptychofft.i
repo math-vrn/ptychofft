@@ -24,7 +24,6 @@ class ptychofft
 
 	float2* f;
 	float2* g;
-	float* theta;
 	float2* prb; 
 	int* scanx; 
 	int* scany; 
@@ -38,7 +37,7 @@ public:
 	ptychofft(size_t Ntheta, size_t Nz, size_t N, 
 		size_t Nscanx, size_t Nscany, size_t detx, size_t dety, size_t Nprb);
 	~ptychofft();	
-	void setobjc(float* theta_, int* scanx_, int* scany_, float2* prb_);
+	void setobjc(int* scanx_, int* scany_, float2* prb_);
 	void fwdc(float2* g_, float2* f_);
 	void adjc(float2* f_, float2* g_);
 	void adjfwd_prbc(float2* f_, float2* ff_);
@@ -52,7 +51,7 @@ public:
 	%apply (int *IN_ARRAY2, int DIM1, int DIM2) {(int* scany_, int N40, int n41)};
 	%apply (float *IN_ARRAY2, int DIM1, int DIM2) {(float* prb_, int N50, int N51)};
 	
-	void setobj(float* theta_, int N20,
+	void setobj(
 			int* scanx_, int N30, int N31,
 			int* scany_, int N40, int n41,
 			float* prb_, int N50, int N51);
