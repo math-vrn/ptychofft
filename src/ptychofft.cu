@@ -112,33 +112,33 @@ void ptychofft::update_ampc(float2* g_, float* data_)
 
 void ptychofft::setobj(int* scanx_, int N30, int N31,
 					int* scany_, int N40, int n41,
-					float* prb_, int N50, int N51)
+					float2* prb_, int N50, int N51)
 {
-	setobjc(scanx_, scany_, (float2*)prb_);
+	setobjc(scanx_, scany_, prb_);
 }
 
-void ptychofft::fwd(float* g_, int N00, int N01, int N02, int N03,
-					float* f_, int N10, int N11, int N12)	
+void ptychofft::fwd(float2* g_, int N00, int N01, int N02, int N03,
+					float2* f_, int N10, int N11, int N12)	
 {
-	fwdc((float2*)g_, (float2*)f_);
+	fwdc(g_, f_);
 }
 
-void ptychofft::adj(float* f_, int N10, int N11, int N12,
-					float* g_, int N00, int N01, int N02, int N03)	
+void ptychofft::adj(float2* f_, int N10, int N11, int N12,
+					float2* g_, int N00, int N01, int N02, int N03)	
 {
-	adjc((float2*)f_, (float2*)g_);
+	adjc(f_, g_);
 }
 
-void ptychofft::adjfwd_prb(float* f_, int N10, int N11, int N12, float* ff_, int N60, int N61, int N62)
+void ptychofft::adjfwd_prb(float2* f_, int N10, int N11, int N12, float2* ff_, int N60, int N61, int N62)
 {
-	adjfwd_prbc((float2*)f_,(float2*)ff_);
+	adjfwd_prbc(f_,ff_);
 }
 
 
-void ptychofft::update_amp(float* g_, int N00, int N01, int N02, int N03,
+void ptychofft::update_amp(float2* g_, int N00, int N01, int N02, int N03,
 	float* data_, int N70, int N71, int N72, int N73)
 {
-	update_ampc((float2*)g_,data_);
+	update_ampc(g_,data_);
 }
 
 

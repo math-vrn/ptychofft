@@ -3064,9 +3064,6 @@ namespace swig {
 #include <numpy/arrayobject.h>
 
 
-#include <complex> 
-
-
 SWIGINTERN int
 SWIG_AsVal_double (PyObject *obj, double *val)
 {
@@ -4007,7 +4004,7 @@ SWIGINTERN PyObject *_wrap_ptychofft_setobj(PyObject *SWIGUNUSEDPARM(self), PyOb
   int *arg5 = (int *) 0 ;
   int arg6 ;
   int arg7 ;
-  float *arg8 = (float *) 0 ;
+  float2 *arg8 = (float2 *) 0 ;
   int arg9 ;
   int arg10 ;
   void *argp1 = 0 ;
@@ -4057,11 +4054,11 @@ SWIGINTERN PyObject *_wrap_ptychofft_setobj(PyObject *SWIGUNUSEDPARM(self), PyOb
     npy_intp size[2] = {
       -1, -1 
     };
-    array8 = obj_to_array_contiguous_allow_conversion(obj3, NPY_FLOAT,
+    array8 = obj_to_array_contiguous_allow_conversion(obj3, NPY_CFLOAT,
       &is_new_object8);
     if (!array8 || !require_dimensions(array8, 2) ||
       !require_size(array8, size, 2)) SWIG_fail;
-    arg8 = (float*) array_data(array8);
+    arg8 = (float2*) array_data(array8);
     arg9 = (int) array_size(array8,0);
     arg10 = (int) array_size(array8,1);
   }
@@ -4112,12 +4109,12 @@ fail:
 SWIGINTERN PyObject *_wrap_ptychofft_fwd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ptychofft *arg1 = (ptychofft *) 0 ;
-  float *arg2 = (float *) 0 ;
+  float2 *arg2 = (float2 *) 0 ;
   int arg3 ;
   int arg4 ;
   int arg5 ;
   int arg6 ;
-  float *arg7 = (float *) 0 ;
+  float2 *arg7 = (float2 *) 0 ;
   int arg8 ;
   int arg9 ;
   int arg10 ;
@@ -4137,10 +4134,10 @@ SWIGINTERN PyObject *_wrap_ptychofft_fwd(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   arg1 = reinterpret_cast< ptychofft * >(argp1);
   {
-    array2 = obj_to_array_no_conversion(obj1, NPY_FLOAT);
+    array2 = obj_to_array_no_conversion(obj1, NPY_CFLOAT);
     if (!array2 || !require_dimensions(array2,4) || !require_contiguous(array2) ||
       !require_native(array2)) SWIG_fail;
-    arg2 = (float*) array_data(array2);
+    arg2 = (float2*) array_data(array2);
     arg3 = (int) array_size(array2,0);
     arg4 = (int) array_size(array2,1);
     arg5 = (int) array_size(array2,2);
@@ -4150,11 +4147,11 @@ SWIGINTERN PyObject *_wrap_ptychofft_fwd(PyObject *SWIGUNUSEDPARM(self), PyObjec
     npy_intp size[3] = {
       -1, -1, -1 
     };
-    array7 = obj_to_array_contiguous_allow_conversion(obj2, NPY_FLOAT,
+    array7 = obj_to_array_contiguous_allow_conversion(obj2, NPY_CFLOAT,
       &is_new_object7);
     if (!array7 || !require_dimensions(array7, 3) ||
       !require_size(array7, size, 3)) SWIG_fail;
-    arg7 = (float*) array_data(array7);
+    arg7 = (float2*) array_data(array7);
     arg8 = (int) array_size(array7,0);
     arg9 = (int) array_size(array7,1);
     arg10 = (int) array_size(array7,2);
@@ -4182,11 +4179,11 @@ fail:
 SWIGINTERN PyObject *_wrap_ptychofft_adj(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ptychofft *arg1 = (ptychofft *) 0 ;
-  float *arg2 = (float *) 0 ;
+  float2 *arg2 = (float2 *) 0 ;
   int arg3 ;
   int arg4 ;
   int arg5 ;
-  float *arg6 = (float *) 0 ;
+  float2 *arg6 = (float2 *) 0 ;
   int arg7 ;
   int arg8 ;
   int arg9 ;
@@ -4207,10 +4204,10 @@ SWIGINTERN PyObject *_wrap_ptychofft_adj(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   arg1 = reinterpret_cast< ptychofft * >(argp1);
   {
-    array2 = obj_to_array_no_conversion(obj1, NPY_FLOAT);
+    array2 = obj_to_array_no_conversion(obj1, NPY_CFLOAT);
     if (!array2 || !require_dimensions(array2,3) || !require_contiguous(array2) ||
       !require_native(array2)) SWIG_fail;
-    arg2 = (float*) array_data(array2);
+    arg2 = (float2*) array_data(array2);
     arg3 = (int) array_size(array2,0);
     arg4 = (int) array_size(array2,1);
     arg5 = (int) array_size(array2,2);
@@ -4219,11 +4216,11 @@ SWIGINTERN PyObject *_wrap_ptychofft_adj(PyObject *SWIGUNUSEDPARM(self), PyObjec
     npy_intp size[4] = {
       -1, -1, -1, -1 
     };
-    array6 = obj_to_array_contiguous_allow_conversion(obj2, NPY_FLOAT,
+    array6 = obj_to_array_contiguous_allow_conversion(obj2, NPY_CFLOAT,
       &is_new_object6);
     if (!array6 || !require_dimensions(array6, 4) ||
       !require_size(array6, size, 4)) SWIG_fail;
-    arg6 = (float*) array_data(array6);
+    arg6 = (float2*) array_data(array6);
     arg7 = (int) array_size(array6,0);
     arg8 = (int) array_size(array6,1);
     arg9 = (int) array_size(array6,2);
@@ -4252,11 +4249,11 @@ fail:
 SWIGINTERN PyObject *_wrap_ptychofft_adjfwd_prb(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ptychofft *arg1 = (ptychofft *) 0 ;
-  float *arg2 = (float *) 0 ;
+  float2 *arg2 = (float2 *) 0 ;
   int arg3 ;
   int arg4 ;
   int arg5 ;
-  float *arg6 = (float *) 0 ;
+  float2 *arg6 = (float2 *) 0 ;
   int arg7 ;
   int arg8 ;
   int arg9 ;
@@ -4276,10 +4273,10 @@ SWIGINTERN PyObject *_wrap_ptychofft_adjfwd_prb(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< ptychofft * >(argp1);
   {
-    array2 = obj_to_array_no_conversion(obj1, NPY_FLOAT);
+    array2 = obj_to_array_no_conversion(obj1, NPY_CFLOAT);
     if (!array2 || !require_dimensions(array2,3) || !require_contiguous(array2) ||
       !require_native(array2)) SWIG_fail;
-    arg2 = (float*) array_data(array2);
+    arg2 = (float2*) array_data(array2);
     arg3 = (int) array_size(array2,0);
     arg4 = (int) array_size(array2,1);
     arg5 = (int) array_size(array2,2);
@@ -4288,11 +4285,11 @@ SWIGINTERN PyObject *_wrap_ptychofft_adjfwd_prb(PyObject *SWIGUNUSEDPARM(self), 
     npy_intp size[3] = {
       -1, -1, -1 
     };
-    array6 = obj_to_array_contiguous_allow_conversion(obj2, NPY_FLOAT,
+    array6 = obj_to_array_contiguous_allow_conversion(obj2, NPY_CFLOAT,
       &is_new_object6);
     if (!array6 || !require_dimensions(array6, 3) ||
       !require_size(array6, size, 3)) SWIG_fail;
-    arg6 = (float*) array_data(array6);
+    arg6 = (float2*) array_data(array6);
     arg7 = (int) array_size(array6,0);
     arg8 = (int) array_size(array6,1);
     arg9 = (int) array_size(array6,2);
@@ -4320,7 +4317,7 @@ fail:
 SWIGINTERN PyObject *_wrap_ptychofft_update_amp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ptychofft *arg1 = (ptychofft *) 0 ;
-  float *arg2 = (float *) 0 ;
+  float2 *arg2 = (float2 *) 0 ;
   int arg3 ;
   int arg4 ;
   int arg5 ;
@@ -4346,10 +4343,10 @@ SWIGINTERN PyObject *_wrap_ptychofft_update_amp(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< ptychofft * >(argp1);
   {
-    array2 = obj_to_array_no_conversion(obj1, NPY_FLOAT);
+    array2 = obj_to_array_no_conversion(obj1, NPY_CFLOAT);
     if (!array2 || !require_dimensions(array2,4) || !require_contiguous(array2) ||
       !require_native(array2)) SWIG_fail;
-    arg2 = (float*) array_data(array2);
+    arg2 = (float2*) array_data(array2);
     arg3 = (int) array_size(array2,0);
     arg4 = (int) array_size(array2,1);
     arg5 = (int) array_size(array2,2);

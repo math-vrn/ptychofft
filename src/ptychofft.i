@@ -46,42 +46,42 @@ public:
 
 	// python wrap
 
-	%apply (float *IN_ARRAY1, int DIM1) {(float* theta_, int N20)};
+	%apply (float2 *IN_ARRAY1, int DIM1) {(float2* theta_, int N20)};
 	%apply (int *IN_ARRAY2, int DIM1, int DIM2) {(int* scanx_, int N30, int N31)};
 	%apply (int *IN_ARRAY2, int DIM1, int DIM2) {(int* scany_, int N40, int n41)};
-	%apply (float *IN_ARRAY2, int DIM1, int DIM2) {(float* prb_, int N50, int N51)};
+	%apply (float2 *IN_ARRAY2, int DIM1, int DIM2) {(float2* prb_, int N50, int N51)};
 	
 	void setobj(
 			int* scanx_, int N30, int N31,
 			int* scany_, int N40, int n41,
-			float* prb_, int N50, int N51);
+			float2* prb_, int N50, int N51);
 
-    %apply (float *INPLACE_ARRAY4, int DIM1, int DIM2, int DIM3, int DIM4) {(float* g_, int N00, int N01, int N02, int N03)};
-	%apply (float *IN_ARRAY3, int DIM1, int DIM2, int DIM3) {(float* f_, int N10, int N11, int N12)};
-	void fwd(float* g_, int N00, int N01, int N02, int N03,
-			float* f_, int N10, int N11, int N12);
-	%clear (float* g_, int N00, int N01, int N02, int N03);
-	%clear (float* f_, int N10, int N11, int N12);
+    %apply (float2 *INPLACE_ARRAY4, int DIM1, int DIM2, int DIM3, int DIM4) {(float2* g_, int N00, int N01, int N02, int N03)};
+	%apply (float2 *IN_ARRAY3, int DIM1, int DIM2, int DIM3) {(float2* f_, int N10, int N11, int N12)};
+	void fwd(float2* g_, int N00, int N01, int N02, int N03,
+			float2* f_, int N10, int N11, int N12);
+	%clear (float2* g_, int N00, int N01, int N02, int N03);
+	%clear (float2* f_, int N10, int N11, int N12);
 
-    %apply (float *IN_ARRAY4, int DIM1, int DIM2, int DIM3, int DIM4) {(float* g_, int N00, int N01, int N02, int N03)};
-	%apply (float *INPLACE_ARRAY3, int DIM1, int DIM2, int DIM3) {(float* f_, int N10, int N11, int N12)};
-	void adj(float* f_, int N10, int N11, int N12,
-			float* g_, int N00, int N01, int N02, int N03);
-	%clear (float* g_, int N00, int N01, int N02, int N03);
-	%clear (float* f_, int N10, int N11, int N12);
+    %apply (float2 *IN_ARRAY4, int DIM1, int DIM2, int DIM3, int DIM4) {(float2* g_, int N00, int N01, int N02, int N03)};
+	%apply (float2 *INPLACE_ARRAY3, int DIM1, int DIM2, int DIM3) {(float2* f_, int N10, int N11, int N12)};
+	void adj(float2* f_, int N10, int N11, int N12,
+			float2* g_, int N00, int N01, int N02, int N03);
+	%clear (float2* g_, int N00, int N01, int N02, int N03);
+	%clear (float2* f_, int N10, int N11, int N12);
 
-	%apply (float *INPLACE_ARRAY3, int DIM1, int DIM2, int DIM3) {(float* f_, int N10, int N11, int N12)};
-	%apply (float *IN_ARRAY3, int DIM1, int DIM2, int DIM3) {(float* ff_, int N60, int N61, int N62)};
-	void adjfwd_prb(float* f_, int N10, int N11, int N12,
-			float* ff_, int N60, int N61, int N62);
-	%clear (float* f_, int N10, int N11, int N12);
-	%clear (float* ff_, int N60, int N61, int N62);
+	%apply (float2 *INPLACE_ARRAY3, int DIM1, int DIM2, int DIM3) {(float2* f_, int N10, int N11, int N12)};
+	%apply (float2 *IN_ARRAY3, int DIM1, int DIM2, int DIM3) {(float2* ff_, int N60, int N61, int N62)};
+	void adjfwd_prb(float2* f_, int N10, int N11, int N12,
+			float2* ff_, int N60, int N61, int N62);
+	%clear (float2* f_, int N10, int N11, int N12);
+	%clear (float2* ff_, int N60, int N61, int N62);
 
-    %apply (float *INPLACE_ARRAY4, int DIM1, int DIM2, int DIM3, int DIM4) {(float* g_, int N00, int N01, int N02, int N03)};	
+    %apply (float2 *INPLACE_ARRAY4, int DIM1, int DIM2, int DIM3, int DIM4) {(float2* g_, int N00, int N01, int N02, int N03)};	
 	%apply (float *IN_ARRAY4, int DIM1, int DIM2, int DIM3, int DIM4) {(float* data_, int N70, int N71, int N72, int N73)};	
-	void update_amp(float* g_, int N00, int N01, int N02, int N03,
+	void update_amp(float2* g_, int N00, int N01, int N02, int N03,
 			float* data_, int N70, int N71, int N72, int N73);
-	%clear (float* g_, int N00, int N01, int N02, int N03);
+	%clear (float2* g_, int N00, int N01, int N02, int N03);
 	%clear (float* data_, int N70, int N71, int N72, int N73);
 
 
