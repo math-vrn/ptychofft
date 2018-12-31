@@ -94,7 +94,22 @@ void __global__ updateamp(float2 *g, float* data,
 	g[ind].x = g0.x*eps/(ga*eps+eps*eps)*data0;
 	g[ind].y = g0.y*eps/(ga*eps+eps*eps)*data0;
 
+}
 
+void __global__ updatepsi(float2* f, float2* ff, float2* ftmp0, float2* ftmp1,
+	float2* fff, float rho, float gamma, float maxint, int Ntheta, int Nz,int N)
+{
+	int tx = blockDim.x * blockIdx.x + threadIdx.x;
+	int ty = blockDim.y * blockIdx.y + threadIdx.y;
+	int tz = blockDim.z * blockIdx.z + threadIdx.z;
+
+	if (tx>=N||ty>=Nz||tz>=Ntheta) return;
+
+	int ind = tx+ty*N+tz*N*Nz;
+	f[ind].x = (1-rho*gamma)*f[ind].x+rho*gamma*(ff[ind].x-fff[ind].x/rho) +
+				gamma/2*(ftmp0[ind].x-ftmp1[ind].x)/maxint;
+	f[ind].y = (1-rho*gamma)*f[ind].y+rho*gamma*(ff[ind].y-fff[ind].y/rho) +
+				gamma/2*(ftmp0[ind].y-ftmp1[ind].y)/maxint;
 
 
 }

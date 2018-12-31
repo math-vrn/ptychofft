@@ -3213,6 +3213,87 @@ SWIG_AsVal_size_t (PyObject * obj, size_t *val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_float (PyObject * obj, float *val)
+{
+  double v;
+  int res = SWIG_AsVal_double (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < -FLT_MAX || v > FLT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< float >(v);
+    }
+  }  
+  return res;
+}
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
+
 #if NPY_API_VERSION < 0x00000007
 #define NPY_ARRAY_DEFAULT NPY_DEFAULT
 #define NPY_ARRAY_FARRAY  NPY_FARRAY
@@ -3995,6 +4076,99 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ptychofft_grad_ptychoc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ptychofft *arg1 = (ptychofft *) 0 ;
+  float2 *arg2 = (float2 *) 0 ;
+  float *arg3 = (float *) 0 ;
+  float2 *arg4 = (float2 *) 0 ;
+  float2 *arg5 = (float2 *) 0 ;
+  float arg6 ;
+  float arg7 ;
+  float arg8 ;
+  int arg9 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  float val6 ;
+  int ecode6 = 0 ;
+  float val7 ;
+  int ecode7 = 0 ;
+  float val8 ;
+  int ecode8 = 0 ;
+  int val9 ;
+  int ecode9 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  PyObject * obj8 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOOO:ptychofft_grad_ptychoc",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7,&obj8)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ptychofft, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ptychofft_grad_ptychoc" "', argument " "1"" of type '" "ptychofft *""'"); 
+  }
+  arg1 = reinterpret_cast< ptychofft * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_float2, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ptychofft_grad_ptychoc" "', argument " "2"" of type '" "float2 *""'"); 
+  }
+  arg2 = reinterpret_cast< float2 * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_float, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ptychofft_grad_ptychoc" "', argument " "3"" of type '" "float *""'"); 
+  }
+  arg3 = reinterpret_cast< float * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_float2, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ptychofft_grad_ptychoc" "', argument " "4"" of type '" "float2 *""'"); 
+  }
+  arg4 = reinterpret_cast< float2 * >(argp4);
+  res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_float2, 0 |  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ptychofft_grad_ptychoc" "', argument " "5"" of type '" "float2 *""'"); 
+  }
+  arg5 = reinterpret_cast< float2 * >(argp5);
+  ecode6 = SWIG_AsVal_float(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ptychofft_grad_ptychoc" "', argument " "6"" of type '" "float""'");
+  } 
+  arg6 = static_cast< float >(val6);
+  ecode7 = SWIG_AsVal_float(obj6, &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "ptychofft_grad_ptychoc" "', argument " "7"" of type '" "float""'");
+  } 
+  arg7 = static_cast< float >(val7);
+  ecode8 = SWIG_AsVal_float(obj7, &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "ptychofft_grad_ptychoc" "', argument " "8"" of type '" "float""'");
+  } 
+  arg8 = static_cast< float >(val8);
+  ecode9 = SWIG_AsVal_int(obj8, &val9);
+  if (!SWIG_IsOK(ecode9)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "ptychofft_grad_ptychoc" "', argument " "9"" of type '" "int""'");
+  } 
+  arg9 = static_cast< int >(val9);
+  (arg1)->grad_ptychoc(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ptychofft_setobj(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ptychofft *arg1 = (ptychofft *) 0 ;
@@ -4386,6 +4560,176 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ptychofft_grad_ptycho(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ptychofft *arg1 = (ptychofft *) 0 ;
+  float2 *arg2 = (float2 *) 0 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  float *arg6 = (float *) 0 ;
+  int arg7 ;
+  int arg8 ;
+  int arg9 ;
+  int arg10 ;
+  float2 *arg11 = (float2 *) 0 ;
+  int arg12 ;
+  int arg13 ;
+  int arg14 ;
+  float2 *arg15 = (float2 *) 0 ;
+  int arg16 ;
+  int arg17 ;
+  int arg18 ;
+  float arg19 ;
+  float arg20 ;
+  float arg21 ;
+  int arg22 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyArrayObject *array2 = NULL ;
+  PyArrayObject *array6 = NULL ;
+  int is_new_object6 = 0 ;
+  PyArrayObject *array11 = NULL ;
+  int is_new_object11 = 0 ;
+  PyArrayObject *array15 = NULL ;
+  int is_new_object15 = 0 ;
+  float val19 ;
+  int ecode19 = 0 ;
+  float val20 ;
+  int ecode20 = 0 ;
+  float val21 ;
+  int ecode21 = 0 ;
+  int val22 ;
+  int ecode22 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  PyObject * obj8 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOOO:ptychofft_grad_ptycho",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7,&obj8)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ptychofft, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ptychofft_grad_ptycho" "', argument " "1"" of type '" "ptychofft *""'"); 
+  }
+  arg1 = reinterpret_cast< ptychofft * >(argp1);
+  {
+    array2 = obj_to_array_no_conversion(obj1, NPY_CFLOAT);
+    if (!array2 || !require_dimensions(array2,3) || !require_contiguous(array2) ||
+      !require_native(array2)) SWIG_fail;
+    arg2 = (float2*) array_data(array2);
+    arg3 = (int) array_size(array2,0);
+    arg4 = (int) array_size(array2,1);
+    arg5 = (int) array_size(array2,2);
+  }
+  {
+    npy_intp size[4] = {
+      -1, -1, -1, -1 
+    };
+    array6 = obj_to_array_contiguous_allow_conversion(obj2, NPY_FLOAT,
+      &is_new_object6);
+    if (!array6 || !require_dimensions(array6, 4) ||
+      !require_size(array6, size, 4)) SWIG_fail;
+    arg6 = (float*) array_data(array6);
+    arg7 = (int) array_size(array6,0);
+    arg8 = (int) array_size(array6,1);
+    arg9 = (int) array_size(array6,2);
+    arg10 = (int) array_size(array6,3);
+  }
+  {
+    npy_intp size[3] = {
+      -1, -1, -1 
+    };
+    array11 = obj_to_array_contiguous_allow_conversion(obj3, NPY_CFLOAT,
+      &is_new_object11);
+    if (!array11 || !require_dimensions(array11, 3) ||
+      !require_size(array11, size, 3)) SWIG_fail;
+    arg11 = (float2*) array_data(array11);
+    arg12 = (int) array_size(array11,0);
+    arg13 = (int) array_size(array11,1);
+    arg14 = (int) array_size(array11,2);
+  }
+  {
+    npy_intp size[3] = {
+      -1, -1, -1 
+    };
+    array15 = obj_to_array_contiguous_allow_conversion(obj4, NPY_CFLOAT,
+      &is_new_object15);
+    if (!array15 || !require_dimensions(array15, 3) ||
+      !require_size(array15, size, 3)) SWIG_fail;
+    arg15 = (float2*) array_data(array15);
+    arg16 = (int) array_size(array15,0);
+    arg17 = (int) array_size(array15,1);
+    arg18 = (int) array_size(array15,2);
+  }
+  ecode19 = SWIG_AsVal_float(obj5, &val19);
+  if (!SWIG_IsOK(ecode19)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode19), "in method '" "ptychofft_grad_ptycho" "', argument " "19"" of type '" "float""'");
+  } 
+  arg19 = static_cast< float >(val19);
+  ecode20 = SWIG_AsVal_float(obj6, &val20);
+  if (!SWIG_IsOK(ecode20)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode20), "in method '" "ptychofft_grad_ptycho" "', argument " "20"" of type '" "float""'");
+  } 
+  arg20 = static_cast< float >(val20);
+  ecode21 = SWIG_AsVal_float(obj7, &val21);
+  if (!SWIG_IsOK(ecode21)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode21), "in method '" "ptychofft_grad_ptycho" "', argument " "21"" of type '" "float""'");
+  } 
+  arg21 = static_cast< float >(val21);
+  ecode22 = SWIG_AsVal_int(obj8, &val22);
+  if (!SWIG_IsOK(ecode22)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode22), "in method '" "ptychofft_grad_ptycho" "', argument " "22"" of type '" "int""'");
+  } 
+  arg22 = static_cast< int >(val22);
+  (arg1)->grad_ptycho(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17,arg18,arg19,arg20,arg21,arg22);
+  resultobj = SWIG_Py_Void();
+  {
+    if (is_new_object6 && array6)
+    {
+      Py_DECREF(array6); 
+    }
+  }
+  {
+    if (is_new_object11 && array11)
+    {
+      Py_DECREF(array11); 
+    }
+  }
+  {
+    if (is_new_object15 && array15)
+    {
+      Py_DECREF(array15); 
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (is_new_object6 && array6)
+    {
+      Py_DECREF(array6); 
+    }
+  }
+  {
+    if (is_new_object11 && array11)
+    {
+      Py_DECREF(array11); 
+    }
+  }
+  {
+    if (is_new_object15 && array15)
+    {
+      Py_DECREF(array15); 
+    }
+  }
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *ptychofft_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
@@ -4402,11 +4746,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ptychofft_adjc", _wrap_ptychofft_adjc, METH_VARARGS, NULL},
 	 { (char *)"ptychofft_adjfwd_prbc", _wrap_ptychofft_adjfwd_prbc, METH_VARARGS, NULL},
 	 { (char *)"ptychofft_update_ampc", _wrap_ptychofft_update_ampc, METH_VARARGS, NULL},
+	 { (char *)"ptychofft_grad_ptychoc", _wrap_ptychofft_grad_ptychoc, METH_VARARGS, NULL},
 	 { (char *)"ptychofft_setobj", _wrap_ptychofft_setobj, METH_VARARGS, NULL},
 	 { (char *)"ptychofft_fwd", _wrap_ptychofft_fwd, METH_VARARGS, NULL},
 	 { (char *)"ptychofft_adj", _wrap_ptychofft_adj, METH_VARARGS, NULL},
 	 { (char *)"ptychofft_adjfwd_prb", _wrap_ptychofft_adjfwd_prb, METH_VARARGS, NULL},
 	 { (char *)"ptychofft_update_amp", _wrap_ptychofft_update_amp, METH_VARARGS, NULL},
+	 { (char *)"ptychofft_grad_ptycho", _wrap_ptychofft_grad_ptycho, METH_VARARGS, NULL},
 	 { (char *)"ptychofft_swigregister", ptychofft_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
