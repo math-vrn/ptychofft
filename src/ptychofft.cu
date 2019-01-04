@@ -120,8 +120,8 @@ void ptychofft::grad_ptychoc(float2* f_,float* data_, float2* ff_, float2* fff_,
 	dim3 BS3d(32,32,1);
 	dim3 GS3d0(ceil(Nprb*Nprb/(float)BS3d.x),ceil(Nscanx*Nscany/(float)BS3d.y),ceil(Ntheta/(float)BS3d.z));
 	dim3 GS3d1(ceil(detx*dety/(float)BS3d.x),ceil(Nscanx*Nscany/(float)BS3d.y),ceil(Ntheta/(float)BS3d.z));
+	dim3 GS3d2(ceil(N/(float)BS3d.x),ceil(Nz/(float)BS3d.y),ceil(Ntheta/(float)BS3d.z));
 
-	//fprintf(stderr,"%f %f %f %d\n",rho,gamma,maxint,niter);
 	for (int i=0;i<niter;i++)
 	{
 		cudaMemset(g,0,Ntheta*Nscanx*Nscany*detx*dety*sizeof(float2));
@@ -134,7 +134,7 @@ void ptychofft::grad_ptychoc(float2* f_,float* data_, float2* ff_, float2* fff_,
 		cufftExecC2C(plan2dfwd, (cufftComplex*)g,(cufftComplex*)g,CUFFT_INVERSE);
 		mula<<<GS3d0,BS3d>>>(ftmp0,g,prb,scanx,scany,Ntheta,Nz,N,Nscanx,Nscany,Nprb,detx,dety);
 		mulamul<<<GS3d0,BS3d>>>(ftmp1,f,prb,scanx,scany,Ntheta,Nz,N,Nscanx,Nscany,Nprb,detx,dety);
-		updatepsi<<<GS3d0,BS3d>>>(f,ff,ftmp0,ftmp1,fff,rho,gamma,maxint,Ntheta,Nz,N);
+		updatepsi<<<GS3d2,BS3d>>>(f,ff,ftmp0,ftmp1,fff,rho,gamma,maxint,Ntheta,Nz,N);
 	}
 	cudaMemcpy(f_,f,Ntheta*Nz*N*sizeof(float2),cudaMemcpyDefault);
 
