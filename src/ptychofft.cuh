@@ -5,8 +5,7 @@ class ptychofft
 	size_t N;
 	size_t Ntheta;
 	size_t Nz;
-	size_t Nscanx;
-	size_t Nscany;
+	size_t Nscan;
 	size_t detx;
 	size_t dety;
 	size_t Nprb;
@@ -14,8 +13,8 @@ class ptychofft
 	float2* f;
 	float2* g;
 	float2* prb; 
-	int* scanx; 
-	int* scany; 
+	float* scanx; 
+	float* scany; 
 	float2* ff;
 	float2* fff;
 	float* data;
@@ -27,9 +26,9 @@ class ptychofft
 
 public:
 	ptychofft(size_t Ntheta, size_t Nz, size_t N, 
-		size_t Nscanx, size_t Nscany, size_t detx, size_t dety, size_t Nprb);
+		size_t Nscan, size_t detx, size_t dety, size_t Nprb);
 	~ptychofft();
-	void setobjc(int* scanx_, int* scany_, float2* prb_);
+	void setobjc(float* scanx_, float* scany_, float2* prb_);
 	void fwdc(float2* g_, float2* f_);
 	void adjc(float2* f_, float2* g_);
 	void adjfwd_prbc(float2* f_, float2* ff_);
@@ -38,8 +37,8 @@ public:
 		float gamma, float maxint, int niter);
 	// python wrap
 	void setobj(
-			int* scanx_, int N30, int N31,
-			int* scany_, int N40, int n41,
+			float* scanx_, int N30, int N31,
+			float* scany_, int N40, int n41,
 			float2* prb_, int N50, int N51);
 
 	void fwd(float2* g_, int N00, int N01, int N02, int N03,

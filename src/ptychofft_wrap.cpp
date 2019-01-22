@@ -2952,10 +2952,9 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_char swig_types[0]
 #define SWIGTYPE_p_float swig_types[1]
 #define SWIGTYPE_p_float2 swig_types[2]
-#define SWIGTYPE_p_int swig_types[3]
-#define SWIGTYPE_p_ptychofft swig_types[4]
-static swig_type_info *swig_types[6];
-static swig_module_info swig_module = {swig_types, 5, 0, 0, 0, 0};
+#define SWIGTYPE_p_ptychofft swig_types[3]
+static swig_type_info *swig_types[5];
+static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3775,7 +3774,6 @@ SWIGINTERN PyObject *_wrap_new_ptychofft(PyObject *SWIGUNUSEDPARM(self), PyObjec
   size_t arg5 ;
   size_t arg6 ;
   size_t arg7 ;
-  size_t arg8 ;
   size_t val1 ;
   int ecode1 = 0 ;
   size_t val2 ;
@@ -3790,8 +3788,6 @@ SWIGINTERN PyObject *_wrap_new_ptychofft(PyObject *SWIGUNUSEDPARM(self), PyObjec
   int ecode6 = 0 ;
   size_t val7 ;
   int ecode7 = 0 ;
-  size_t val8 ;
-  int ecode8 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -3799,10 +3795,9 @@ SWIGINTERN PyObject *_wrap_new_ptychofft(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
   PyObject * obj6 = 0 ;
-  PyObject * obj7 = 0 ;
   ptychofft *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOO:new_ptychofft",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:new_ptychofft",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6)) SWIG_fail;
   ecode1 = SWIG_AsVal_size_t(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_ptychofft" "', argument " "1"" of type '" "size_t""'");
@@ -3838,12 +3833,7 @@ SWIGINTERN PyObject *_wrap_new_ptychofft(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_ptychofft" "', argument " "7"" of type '" "size_t""'");
   } 
   arg7 = static_cast< size_t >(val7);
-  ecode8 = SWIG_AsVal_size_t(obj7, &val8);
-  if (!SWIG_IsOK(ecode8)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_ptychofft" "', argument " "8"" of type '" "size_t""'");
-  } 
-  arg8 = static_cast< size_t >(val8);
-  result = (ptychofft *)new ptychofft(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+  result = (ptychofft *)new ptychofft(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ptychofft, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3875,8 +3865,8 @@ fail:
 SWIGINTERN PyObject *_wrap_ptychofft_setobjc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ptychofft *arg1 = (ptychofft *) 0 ;
-  int *arg2 = (int *) 0 ;
-  int *arg3 = (int *) 0 ;
+  float *arg2 = (float *) 0 ;
+  float *arg3 = (float *) 0 ;
   float2 *arg4 = (float2 *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -3897,16 +3887,16 @@ SWIGINTERN PyObject *_wrap_ptychofft_setobjc(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ptychofft_setobjc" "', argument " "1"" of type '" "ptychofft *""'"); 
   }
   arg1 = reinterpret_cast< ptychofft * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_int, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_float, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ptychofft_setobjc" "', argument " "2"" of type '" "int *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ptychofft_setobjc" "', argument " "2"" of type '" "float *""'"); 
   }
-  arg2 = reinterpret_cast< int * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_int, 0 |  0 );
+  arg2 = reinterpret_cast< float * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_float, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ptychofft_setobjc" "', argument " "3"" of type '" "int *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ptychofft_setobjc" "', argument " "3"" of type '" "float *""'"); 
   }
-  arg3 = reinterpret_cast< int * >(argp3);
+  arg3 = reinterpret_cast< float * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_float2, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ptychofft_setobjc" "', argument " "4"" of type '" "float2 *""'"); 
@@ -4172,10 +4162,10 @@ fail:
 SWIGINTERN PyObject *_wrap_ptychofft_setobj(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ptychofft *arg1 = (ptychofft *) 0 ;
-  int *arg2 = (int *) 0 ;
+  float *arg2 = (float *) 0 ;
   int arg3 ;
   int arg4 ;
-  int *arg5 = (int *) 0 ;
+  float *arg5 = (float *) 0 ;
   int arg6 ;
   int arg7 ;
   float2 *arg8 = (float2 *) 0 ;
@@ -4204,11 +4194,11 @@ SWIGINTERN PyObject *_wrap_ptychofft_setobj(PyObject *SWIGUNUSEDPARM(self), PyOb
     npy_intp size[2] = {
       -1, -1 
     };
-    array2 = obj_to_array_contiguous_allow_conversion(obj1, NPY_INT,
+    array2 = obj_to_array_contiguous_allow_conversion(obj1, NPY_FLOAT,
       &is_new_object2);
     if (!array2 || !require_dimensions(array2, 2) ||
       !require_size(array2, size, 2)) SWIG_fail;
-    arg2 = (int*) array_data(array2);
+    arg2 = (float*) array_data(array2);
     arg3 = (int) array_size(array2,0);
     arg4 = (int) array_size(array2,1);
   }
@@ -4216,11 +4206,11 @@ SWIGINTERN PyObject *_wrap_ptychofft_setobj(PyObject *SWIGUNUSEDPARM(self), PyOb
     npy_intp size[2] = {
       -1, -1 
     };
-    array5 = obj_to_array_contiguous_allow_conversion(obj2, NPY_INT,
+    array5 = obj_to_array_contiguous_allow_conversion(obj2, NPY_FLOAT,
       &is_new_object5);
     if (!array5 || !require_dimensions(array5, 2) ||
       !require_size(array5, size, 2)) SWIG_fail;
-    arg5 = (int*) array_data(array5);
+    arg5 = (float*) array_data(array5);
     arg6 = (int) array_size(array5,0);
     arg7 = (int) array_size(array5,1);
   }
@@ -4763,28 +4753,24 @@ static PyMethodDef SwigMethods[] = {
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_float2 = {"_p_float2", "float2 *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ptychofft = {"_p_ptychofft", "ptychofft *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_float,
   &_swigt__p_float2,
-  &_swigt__p_int,
   &_swigt__p_ptychofft,
 };
 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_float2[] = {  {&_swigt__p_float2, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ptychofft[] = {  {&_swigt__p_ptychofft, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_float,
   _swigc__p_float2,
-  _swigc__p_int,
   _swigc__p_ptychofft,
 };
 
