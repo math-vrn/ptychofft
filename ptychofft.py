@@ -82,15 +82,9 @@ class ptychofft(_object):
     def setobjc(self, *args): return _ptychofft.ptychofft_setobjc(self, *args)
     def fwdc(self, *args): return _ptychofft.ptychofft_fwdc(self, *args)
     def adjc(self, *args): return _ptychofft.ptychofft_adjc(self, *args)
-    def adjfwd_prbc(self, *args): return _ptychofft.ptychofft_adjfwd_prbc(self, *args)
-    def update_ampc(self, *args): return _ptychofft.ptychofft_update_ampc(self, *args)
-    def grad_ptychoc(self, *args): return _ptychofft.ptychofft_grad_ptychoc(self, *args)
     def setobj(self, *args): return _ptychofft.ptychofft_setobj(self, *args)
     def fwd(self, *args): return _ptychofft.ptychofft_fwd(self, *args)
     def adj(self, *args): return _ptychofft.ptychofft_adj(self, *args)
-    def adjfwd_prb(self, *args): return _ptychofft.ptychofft_adjfwd_prb(self, *args)
-    def update_amp(self, *args): return _ptychofft.ptychofft_update_amp(self, *args)
-    def grad_ptycho(self, *args): return _ptychofft.ptychofft_grad_ptycho(self, *args)
 ptychofft_swigregister = _ptychofft.ptychofft_swigregister
 ptychofft_swigregister(ptychofft)
 
