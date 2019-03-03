@@ -3221,6 +3221,7 @@ SWIGINTERN PyObject *_wrap_new_ptychofft(PyObject *SWIGUNUSEDPARM(self), PyObjec
   size_t arg5 ;
   size_t arg6 ;
   size_t arg7 ;
+  size_t arg8 ;
   size_t val1 ;
   int ecode1 = 0 ;
   size_t val2 ;
@@ -3235,6 +3236,8 @@ SWIGINTERN PyObject *_wrap_new_ptychofft(PyObject *SWIGUNUSEDPARM(self), PyObjec
   int ecode6 = 0 ;
   size_t val7 ;
   int ecode7 = 0 ;
+  size_t val8 ;
+  int ecode8 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -3242,9 +3245,10 @@ SWIGINTERN PyObject *_wrap_new_ptychofft(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
   PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
   ptychofft *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:new_ptychofft",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOO:new_ptychofft",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
   ecode1 = SWIG_AsVal_size_t(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_ptychofft" "', argument " "1"" of type '" "size_t""'");
@@ -3280,7 +3284,12 @@ SWIGINTERN PyObject *_wrap_new_ptychofft(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_ptychofft" "', argument " "7"" of type '" "size_t""'");
   } 
   arg7 = static_cast< size_t >(val7);
-  result = (ptychofft *)new ptychofft(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  ecode8 = SWIG_AsVal_size_t(obj7, &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_ptychofft" "', argument " "8"" of type '" "size_t""'");
+  } 
+  arg8 = static_cast< size_t >(val8);
+  result = (ptychofft *)new ptychofft(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ptychofft, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
