@@ -126,6 +126,7 @@ setup(name='ptychofft',
       author='Viktor Nikitin',
       version='0.1',
 
+      package_dir = {'': 'src'},
       # this is necessary so that the swigged python file gets picked up
       py_modules=['ptychofft'],
    
